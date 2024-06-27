@@ -41,12 +41,12 @@ export const UserForm = ({ isRegister }: LoginFormProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-2">
-        <div className="flex gap-4 pl-6 items-center min-h-[68px] w-[311px] border-[1px] rounded-lg border-[#E9ECEF]">
+        <div className="flex gap-4 pl-6 items-center min-h-[68px] w-[370px] border-[1px] rounded-lg border-[#E9ECEF]">
           <EmailSVG />
           <div className="flex flex-col py-2">
             <label htmlFor="email">Email Address</label>
             <input
-              className="w-48 focus:rounded-sm focus:outline-none focus:border-[#BC8363] focus:ring-2 focus:ring-[#BC8363]"
+              className="w-48 pt-2 focus:rounded-sm focus:outline-none focus:border-[#BC8363] focus:ring-2 focus:ring-[#BC8363]"
               placeholder="Your email address"
               {...register("email")}
             />
@@ -58,12 +58,12 @@ export const UserForm = ({ isRegister }: LoginFormProps) => {
           </div>
         </div>
         {isRegister && (
-          <div className="flex gap-4 pl-6 items-center min-h-[68px] w-[311px] border-[1px] rounded-lg border-[#E9ECEF]">
+          <div className="flex gap-4 pl-6 items-center min-h-[68px] w-[370px] border-[1px] rounded-lg border-[#E9ECEF]">
             <MobileSVG />
             <div className="flex flex-col py-2">
               <label htmlFor="phone">Mobile Number</label>
               <input
-                className="w-48 focus:rounded-sm focus:outline-none focus:border-[#BC8363] focus:ring-2 focus:ring-[#BC8363]"
+                className="w-48 pt-2 focus:rounded-sm focus:outline-none focus:border-[#BC8363] focus:ring-2 focus:ring-[#BC8363]"
                 placeholder="Your phone number"
                 {...register("phone")}
                 onChange={(e) => {
@@ -81,12 +81,12 @@ export const UserForm = ({ isRegister }: LoginFormProps) => {
             </div>
           </div>
         )}
-        <div className="flex gap-4 pl-6 items-center min-h-[68px] w-[311px] border-[1px] rounded-lg border-[#E9ECEF]">
+        <div className="flex gap-4 pl-6 items-center min-h-[68px] w-[370px] border-[1px] rounded-lg border-[#E9ECEF]">
           <PasswordSVG />
           <div className="flex flex-col py-2">
             <label htmlFor="password">Password</label>
             <input
-              className="w-48 focus:rounded-sm focus:outline-none focus:border-[#BC8363] focus:ring-2 focus:ring-[#BC8363]"
+              className="w-48 pt-2 focus:rounded-sm focus:outline-none focus:border-[#BC8363] focus:ring-2 focus:ring-[#BC8363]"
               type={isShowPassword ? "text" : "password"}
               placeholder="Enter your password"
               {...register("password")}
@@ -97,14 +97,14 @@ export const UserForm = ({ isRegister }: LoginFormProps) => {
               </span>
             )}
           </div>
-          <span onClick={() => handleShowPassworld()} className="mr-4 cursor-pointer">
+          <span onClick={() => handleShowPassworld()} className="ml-10 cursor-pointer">
             <EyeSVG fill={isShowPassword ? "#f89161" : "#8B8B8B"} />
           </span>
         </div>
       </div>
       <div className="flex flex-col items-center gap-4">
         <button
-          className="mt-6 rounded-md text-white bg-[#BC8363] h-[55px] w-[311px]"
+          className="mt-6 rounded-md text-white bg-[#BC8363] h-[55px] w-[370px]"
           type="submit"
         >
           {isRegister ? "Create Account" : "Login"}
