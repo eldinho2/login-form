@@ -1,12 +1,12 @@
+import { useState } from 'react'
 import { AuthPage } from './components/AuthPage';
 
 function App() {
-  const currentURL = window.location.href;
-  const isRegister = currentURL.includes('registro');
+  const [isRegister, setIsRegister] = useState(false)
 
   return (
     <div className='flex justify-center items-center h-screen'>
-      <AuthPage isRegister={isRegister} />
+      <AuthPage isRegister={isRegister} setIsRegister={setIsRegister} />
     </div>  
   )
 }

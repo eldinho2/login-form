@@ -1,7 +1,8 @@
 import { TypeisRegister } from '../types'
 import { GoogleSVG, FacebookSVG, AppleSVG, TwitterSVG } from "../assets/SVGs";
 
-export const FooterAuth = ({isRegister}: TypeisRegister) => {
+export const FooterAuth = ({isRegister, setIsRegister}: TypeisRegister) => {
+  isRegister = isRegister ?? false;
   return (
     <div className="flex flex-col justify-center items-center gap-7">
     {isRegister ? (
@@ -32,7 +33,7 @@ export const FooterAuth = ({isRegister}: TypeisRegister) => {
         Already have an account?{" "}
         <span
           className="font-thin px-1 text-[#BC8363] cursor-pointer"
-          onClick={() => (window.location.href = "/")}
+          onClick={() => setIsRegister && setIsRegister(false)}
         >
           Login Now
         </span>
@@ -42,7 +43,7 @@ export const FooterAuth = ({isRegister}: TypeisRegister) => {
         Don’t have an account?
         <span
           className="font-thin px-1 text-[#BC8363] cursor-pointer"
-          onClick={() => (window.location.href = "/registro")}
+          onClick={() => setIsRegister && setIsRegister(true)}
         >
           Create Now
         </span>

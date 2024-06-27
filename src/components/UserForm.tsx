@@ -1,43 +1,42 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-
 import { EmailSVG, MobileSVG, PasswordSVG, EyeSVG } from "../assets/SVGs";
+import { UserFormProps, FormData } from "../types";
 
-const createUserFormSchema = z.object({
+const createUserFormSchema = (isRegister: boolean) => z.object({
   email: z.string().email({ message: "Enter a valid email address" }),
   password: z
     .string()
     .min(8, { message: "The password must be between 8 and 16 characters" })
     .max(16, { message: "The password must be between 8 and 16 characters" }),
-  phone: z.string().min(10, { message: "Enter a valid phone number" }),
+  phone: isRegister ? z.string().min(10, { message: "Enter a valid phone number" }).optional() : z.string().optional(),
 });
 
-type createUserFormData = z.infer<typeof createUserFormSchema>;
-
-type LoginFormProps = {
-  isRegister: boolean;
-};
-
-export const UserForm = ({ isRegister }: LoginFormProps) => {
+export const UserForm = ({ isRegister }: UserFormProps) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<createUserFormData>({
-    resolver: zodResolver(createUserFormSchema),
+  } = useForm<FormData>({
+    resolver: zodResolver(createUserFormSchema(isRegister)),
   });
 
-  const onSubmit = (data: createUserFormData) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    setToastMessage(`Suas credenciais foram enviadas com sucesso! ${JSON.stringify(data)}`);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 6000);
   };
 
   const handleShowPassworld = () => {
     setIsShowPassword(!isShowPassword);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-2">
@@ -111,6 +110,11 @@ export const UserForm = ({ isRegister }: LoginFormProps) => {
         </button>
         {!isRegister && <span className="text-[#BC8363]">Forgot Password</span>}
       </div>
+      {showToast && (
+        <div className="fixed bottom-4 right-4 bg-[#BC8363] text-white p-4 rounded">
+          {toastMessage}
+        </div>
+      )}
     </form>
   );
 };
