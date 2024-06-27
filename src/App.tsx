@@ -1,9 +1,13 @@
+import { AuthPage } from './components/AuthPage';
 
 function App() {
+  const currentURL = window.location.href;
+  const isRegister = currentURL.includes('registro');
+
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className='flex justify-center items-center h-screen'>
+      <AuthPage isRegister={isRegister} />
+    </div>  
   )
 }
 
