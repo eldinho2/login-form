@@ -28,7 +28,7 @@ export const HeaderAuth = ({isRegister, setIsRegister}: TypeisRegister) => {
         </svg>
         <img
           className="w-[275px] h-[275px] object-cover relative -rotate-[115deg] top-[10px] left-[220px] grayscale opacity-60"
-          src="/public/1f0eac6f343f568563a2361230744276-removebg-preview.png"
+          src="https://cdn.discordapp.com/attachments/616035988518600704/1256000065131122688/1f0eac6f343f568563a2361230744276-removebg-preview.png?ex=667f2cb6&is=667ddb36&hm=285766b9218d15f32d9726f90da4cd8b349b936ae2969efe839abd61abf72514&"
           alt="Login BackGround Plant Image"
         />
       </div>
